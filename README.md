@@ -3,4 +3,4 @@ API  docs:
 http://omdbapi.com/
 
 Example API call:
-https://www.omdbapi.com/?s=comedy&apikey=dc077f32
+https://www.omdbapi.com/?s=alien&page=1&apikey=dc077f32

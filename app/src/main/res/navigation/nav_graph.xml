@@ -3,18 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/OMDbFragment">
-
+    app:startDestination="@id/resultsListFragment">
     <fragment
-        android:id="@+id/OMDbFragment"
-        android:name="edu.uchicago.fullstack.androidretro.AA_view.views.OMDbFragment"
-        android:label="OMDbFragment" >
+        android:id="@+id/resultsListFragment"
+        android:name="edu.uchicago.fullstack.androidretro.AA_view.views.ResultsListFragment"
+        android:label="ResultsListFragment">
         <action
-            android:id="@+id/action_OMDbFragment_to_detailFragment2"
+            android:id="@+id/action_resultsListFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
         android:name="edu.uchicago.fullstack.androidretro.AA_view.views.DetailFragment"
-        android:label="DetailFragment" />
+        android:label="detail_fragment"
+        tools:layout="@layout/fragment_detail"/>
 </navigation>

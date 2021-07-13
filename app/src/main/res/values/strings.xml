@@ -1,5 +1,27 @@
 <resources>
     <string name="app_name">androidRetro</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="title">title</string>
+    <string name="year">year</string>
+    <string name="imdbID">imbdID</string>
+    <string name="imageUrlLarge">imageUrlLarge</string>
+    <string name="type">type</string>
+
+    <string name="error_message">Error !! Tap to retry.</string>
+
+    <string name="article_list">Books List</string>
+    <string name="article_detail">Book Detail</string>
+    <string name="no_data_found">No data found!</string>
+
+    <string-array name="walmarts">
+        <item>5630 W Touhy Ave, Niles, IL 60714</item>
+        <item>4650 W North Ave, Chicago, IL 60639</item>
+        <item>137 W North Ave, Northlake, IL 60164</item>
+        <item>4626 W Diversey Ave, Chicago, IL 60639</item>
+        <item>3320 S Cicero Ave, Cicero, IL 60804</item>
+        <item>2900 Kirk Rd, Aurora, IL 60502</item>
+        <item>10900 S Doty Ave, Chicago, IL 60628</item>
+        <item>17625 Torrence Ave, Lansing, IL 60438</item>
+        <item>1100 S Randall Rd, Elgin, IL 60123"</item>
+    </string-array>
 </resources>

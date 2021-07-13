@@ -2,11 +2,10 @@
 package edu.uchicago.fullstack.androidretro.CC_model.models;
 
 import java.util.List;
-import javax.annotation.Generated;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-@Generated("jsonschema2pojo")
+//courtesy of https://www.jsonschema2pojo.org/ (Generated tag was throwing exceptions)
 public class MovieResponse {
 
     @SerializedName("Search")
