@@ -36,13 +36,13 @@ public class MoviesListViewModel extends ViewModel {
 
     //helpers
     private final CompositeDisposable compositeDisposable;
-    private final GoogleDataSourceFactory googleDataSourceFactory;
+    private final MovieDataSourceFactory movieDataSourceFactory;
 
 
     public MoviesListViewModel() {
         super();
         compositeDisposable = new CompositeDisposable();
-        googleDataSourceFactory = new GoogleDataSourceFactory(compositeDisposable, MovieRepository.getService());
+        movieDataSourceFactory = new MovieDataSourceFactory(compositeDisposable, MovieRepository.getService());
         final int PAGE_SIZE = 10;
         PagedList.Config config = new PagedList.Config.Builder()
                 .setPageSize(PAGE_SIZE)
@@ -50,7 +50,7 @@ public class MoviesListViewModel extends ViewModel {
                 .setEnablePlaceholders(false)
                 .build();
 
-        moviesList = new LivePagedListBuilder(googleDataSourceFactory, config).build();
+        moviesList = new LivePagedListBuilder(movieDataSourceFactory, config).build();
 
     }
 
@@ -58,8 +58,8 @@ public class MoviesListViewModel extends ViewModel {
     public LiveData<LoadState> getState() {
 
         return Transformations.switchMap(
-                googleDataSourceFactory.googlePagedKeyedDataSourceMutableLiveData,
-                GooglePagedKeyedDataSource::getState
+                movieDataSourceFactory.googlePagedKeyedDataSourceMutableLiveData,
+                MoviePagedKeyedDataSource::getState
         );
     }
 
@@ -70,7 +70,7 @@ public class MoviesListViewModel extends ViewModel {
 
 
     public void retry() {
-        googleDataSourceFactory.googlePagedKeyedDataSourceMutableLiveData.getValue().retry();
+        movieDataSourceFactory.googlePagedKeyedDataSourceMutableLiveData.getValue().retry();
     }
 
     public Boolean listIsEmpty() {
@@ -91,12 +91,12 @@ public class MoviesListViewModel extends ViewModel {
 }
 
 //inner class
-class GoogleDataSourceFactory extends DataSource.Factory<Integer, Search> {
-    public MutableLiveData<GooglePagedKeyedDataSource> googlePagedKeyedDataSourceMutableLiveData = new MutableLiveData<GooglePagedKeyedDataSource>();
+class MovieDataSourceFactory extends DataSource.Factory<Integer, Search> {
+    public MutableLiveData<MoviePagedKeyedDataSource> googlePagedKeyedDataSourceMutableLiveData = new MutableLiveData<MoviePagedKeyedDataSource>();
     public CompositeDisposable compositeDisposable;
     public MovieService movieService;
 
-    public GoogleDataSourceFactory(CompositeDisposable compositeDisposable, MovieService movieService) {
+    public MovieDataSourceFactory(CompositeDisposable compositeDisposable, MovieService movieService) {
         this.compositeDisposable = compositeDisposable;
         this.movieService = movieService;
     }
@@ -104,14 +104,14 @@ class GoogleDataSourceFactory extends DataSource.Factory<Integer, Search> {
     @NonNull
     @Override
     public DataSource<Integer, Search> create() {
-        GooglePagedKeyedDataSource googlePagedKeyedDataSource = new GooglePagedKeyedDataSource(movieService, compositeDisposable);
-        googlePagedKeyedDataSourceMutableLiveData.postValue(googlePagedKeyedDataSource);
-        return googlePagedKeyedDataSource;
+        MoviePagedKeyedDataSource moviePagedKeyedDataSource = new MoviePagedKeyedDataSource(movieService, compositeDisposable);
+        googlePagedKeyedDataSourceMutableLiveData.postValue(moviePagedKeyedDataSource);
+        return moviePagedKeyedDataSource;
     }
 }
 
 //inner class
-class GooglePagedKeyedDataSource extends PageKeyedDataSource<Integer, Search> {
+class MoviePagedKeyedDataSource extends PageKeyedDataSource<Integer, Search> {
 
     MovieService movieService;
     CompositeDisposable compositeDisposable;
@@ -126,10 +126,10 @@ class GooglePagedKeyedDataSource extends PageKeyedDataSource<Integer, Search> {
         return state;
     }
 
-    GooglePagedKeyedDataSource(MovieService movieService,
-                               CompositeDisposable compositeDisposable) {
+    MoviePagedKeyedDataSource(MovieService movieService,
+                              CompositeDisposable compositeDisposable) {
         super();
-        //this registers the BooksPagedKeyedDataSource as a subscriber.
+        //this registers the MoviesPagedKeyedDataSource as a subscriber.
         //notice the method below annotated with @Subscribe(threadMode = ThreadMode.MAIN)
         EventBus.getDefault().register(this);
         this.movieService = movieService;
@@ -183,7 +183,7 @@ class GooglePagedKeyedDataSource extends PageKeyedDataSource<Integer, Search> {
     public void loadAfter(@NonNull final LoadParams<Integer> params, @NonNull final LoadCallback<Integer, Search> callback) {
         updateState(LoadState.LOADING);
 
-        startPage = startPage + 10;
+        startPage = startPage + 1;
 
         Log.d("PAGING", params.requestedLoadSize + ":" + params.key);
 

@@ -114,7 +114,7 @@ public class MovieListAdapter extends PagedListAdapter<Search, RecyclerView.View
 class MoviesViewHolder extends RecyclerView.ViewHolder {
     ImageView newsBanner;
     TextView movieItemTitle;
-    TextView movieItemImdbId, movieItemYear;
+    TextView movieItemType, movieItemYear;
 
     //need to reference to the containerView to communicate with the operating system
     public static View containerView;
@@ -125,7 +125,7 @@ class MoviesViewHolder extends RecyclerView.ViewHolder {
 
         newsBanner =  itemView.findViewById(R.id.img_news_banner);
         movieItemTitle =  itemView.findViewById(R.id.movie_item_title);
-        movieItemImdbId =  itemView.findViewById(R.id.movie_item_imdb_id);
+        movieItemType =  itemView.findViewById(R.id.movie_item_type);
         movieItemYear =  itemView.findViewById(R.id.movie_item_year);
 
     }
@@ -146,12 +146,12 @@ class MoviesViewHolder extends RecyclerView.ViewHolder {
 
             }
 
-            if (item.getImdbID() != null) {
-                String imdbId = String.join(", ", item.getImdbID());
-                movieItemImdbId.setText(imdbId);
+            if (item.getType() != null) {
+                String imdbId = String.join(", ", item.getType());
+                movieItemType.setText("Type: " +imdbId);
             }
 
-            movieItemYear.setText(item.getYear());
+            movieItemYear.setText("Released: "+item.getYear());
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

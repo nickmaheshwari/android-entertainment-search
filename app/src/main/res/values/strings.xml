@@ -9,8 +9,8 @@
 
     <string name="error_message">Error !! Tap to retry.</string>
 
-    <string name="article_list">Books List</string>
-    <string name="article_detail">Book Detail</string>
+    <string name="article_list">Entertainment List</string>
+    <string name="article_detail">Entertainment Detail</string>
     <string name="no_data_found">No data found!</string>
 
     <string-array name="walmarts">
@@ -24,4 +24,6 @@
         <item>17625 Torrence Ave, Lansing, IL 60438</item>
         <item>1100 S Randall Rd, Elgin, IL 60123"</item>
     </string-array>
+
+
 </resources>

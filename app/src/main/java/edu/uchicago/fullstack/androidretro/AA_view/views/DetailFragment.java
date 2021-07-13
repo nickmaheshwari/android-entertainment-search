@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import edu.uchicago.fullstack.androidretro.CC_model.apis.MovieService;
 import edu.uchicago.fullstack.androidretro.CC_model.utils.Constants;
 import edu.uchicago.fullstack.androidretro.R;
 
@@ -31,6 +33,8 @@ public class DetailFragment extends Fragment {
     private String link, address;
     private TextView headerTitle;
     private Button imgShare, imgNavigation;
+    MovieService movieService;
+    private final String API_KEY = "dc077f32";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -95,10 +99,10 @@ public class DetailFragment extends Fragment {
 
     private void fetchDataFromBundleArguments(Bundle bundle) {
         if (bundle != null) {
-            title.setText(bundle.getString(Constants.title));
-            year.setText(bundle.getString(Constants.year));
-            type.setText(bundle.getString(Constants.type));
-            imdbId.setText(bundle.getString(Constants.imdbId));
+            title.setText("Title: "+bundle.getString(Constants.title));
+            year.setText("Release Year: "+ bundle.getString(Constants.year));
+            imdbId.setText("IMdb ID: "+bundle.getString(Constants.imdbId));
+            type.setText("Entertainment Type: "+bundle.getString(Constants.type));
             link = bundle.getString(Constants.imageUrl);
             address = bundle.getString(Constants.address);
 
@@ -107,6 +111,9 @@ public class DetailFragment extends Fragment {
                     .into(imgMovie);
         }
     }
+
+
+
 
     @Override
     public void onResume() {

@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content" />
 
             <TextView
-                android:id="@+id/movie_item_imdb_id"
+                android:id="@+id/movie_item_type"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"/>

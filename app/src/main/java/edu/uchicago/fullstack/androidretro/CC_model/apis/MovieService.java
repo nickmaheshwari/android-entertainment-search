@@ -13,4 +13,5 @@ public interface MovieService {
             @Query("apikey") String apiKey,
             @Query("page") int page
     );
+    
 }
