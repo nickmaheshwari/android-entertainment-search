@@ -1,4 +1,5 @@
-#This is a movie search application
+Android Entertainment Search:
+This is a relatively simple Android application that implements OMBD's API to search for entertainment.
 API  docs:
 http://omdbapi.com/
 
