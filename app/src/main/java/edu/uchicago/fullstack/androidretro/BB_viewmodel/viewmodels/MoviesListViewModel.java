@@ -183,7 +183,7 @@ class MoviePagedKeyedDataSource extends PageKeyedDataSource<Integer, Search> {
     public void loadAfter(@NonNull final LoadParams<Integer> params, @NonNull final LoadCallback<Integer, Search> callback) {
         updateState(LoadState.LOADING);
 
-        startPage = startPage + 1;
+        startPage = startPage + 1; //increment page to get next page of data
 
         Log.d("PAGING", params.requestedLoadSize + ":" + params.key);
 

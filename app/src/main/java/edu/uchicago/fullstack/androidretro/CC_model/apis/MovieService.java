@@ -3,6 +3,7 @@ package edu.uchicago.fullstack.androidretro.CC_model.apis;
 import edu.uchicago.fullstack.androidretro.CC_model.models.MovieResponse;
 import io.reactivex.Single;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.Query;
 
 public interface MovieService {
@@ -12,6 +13,14 @@ public interface MovieService {
             @Query("s") String search,
             @Query("apikey") String apiKey,
             @Query("page") int page
+
     );
-    
+
+    @GET("/")
+    Single<MovieResponse> searchPlot(
+            @Query("i") String imdbId,
+            @Query("apikey") String apiKey
+
+    );
+
 }
